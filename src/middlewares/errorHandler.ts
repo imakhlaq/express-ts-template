@@ -2,6 +2,7 @@ import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
 
 /**
  * your own error handler if you throw any error in sync method it will be received here
+ * async will also work because of the import "express-async-errors";
  * @param err
  * @param req
  * @param res

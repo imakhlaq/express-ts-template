@@ -2,7 +2,8 @@ import express, { Express } from "express";
 import cors from "cors";
 import { errorHandler } from "./middlewares/errorHandler";
 
-import "express-async-errors"; // <---------- apply async error patch
+import "express-async-errors";
+import path from "node:path"; // <---------- apply async error patch
 //because of this u don't have to do next(throw new Error("error"))
 //U can directly throw an error. And it will be in your error middleware
 
@@ -12,6 +13,9 @@ const app: Express = express();
 
 //json parser
 app.use(express.json());
+
+//serving static files
+app.use(express.static(path.join(__dirname, "public")));
 
 //form data parser
 app.use(express.urlencoded());
