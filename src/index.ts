@@ -2,10 +2,12 @@ import express, { Express } from "express";
 import cors from "cors";
 import { errorHandler } from "./middlewares/errorHandler";
 
-import "express-async-errors";
-import path from "path"; // <---------- apply async error patch
-//because of this u don't have to do next(throw new Error("error"))
-//U can directly throw an error. And it will be in your error middleware
+import "express-async-errors"; // <---------- apply async error patch
+/*
+Because of this u don't have to do next(throw new Error("error")).
+U can directly throw an error. And it will be in your error middleware.
+ */
+import path from "path";
 
 const PORT = 300;
 
