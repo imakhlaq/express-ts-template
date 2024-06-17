@@ -1,0 +1,78 @@
+# Java #
+*.class
+
+# C++ #
+*.exe
+
+# General #
+log/
+*.log
+*.iml
+
+# Package Files #
+*.war
+*.ear
+
+### VS Code ###
+.vscode/
+
+# Project dependencies #
+.cache
+node_modules
+yarn-error.log
+out
+#package-lock.json
+
+# Build directory
+
+# Node
+npm-debug.log
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# FastRequest #
+.fastRequest
+.fastRequest/
+
+# vi
+*~
+
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
