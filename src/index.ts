@@ -3,7 +3,7 @@ import cors from "cors";
 import { errorHandler } from "./middlewares/errorHandler";
 
 import "express-async-errors";
-import path from "node:path"; // <---------- apply async error patch
+import path from "path"; // <---------- apply async error patch
 //because of this u don't have to do next(throw new Error("error"))
 //U can directly throw an error. And it will be in your error middleware
 
