@@ -1,31 +1,35 @@
 import express, { Express } from "express";
 import cors from "cors";
-import { errorHandler } from "./middlewares/errorHandler";
-
+import path from "path";
+import envConfig from "./config/envConfig";
 import "express-async-errors"; // <---------- apply async error patch
 /*
 Because of this u don't have to do next(throw new Error("error")).
-U can directly throw an error. And it will be in your error middleware.
- */
-import path from "path";
+you can directly throw an error. And it will be in your error middleware.
+*/
+import { errorHandler } from "./middlewares/errorHandler";
 
-const PORT = 300;
+const PORT = envConfig.PORT;
 
-const app: Express = express();
+function startServer() {
+  const app: Express = express();
 
-//json parser
-app.use(express.json());
+  //json parser
+  app.use(express.json());
 
-//serving static files
-app.use(express.static(path.join(__dirname, "public")));
+  //serving static files
+  app.use(express.static(path.join(__dirname, "public")));
 
-//form data parser
-app.use(express.urlencoded());
+  //form data parser
+  app.use(express.urlencoded());
 
-//cors enable (you can configure it)
-app.use(cors());
+  //cors enable (you can configure it)
+  app.use(cors());
 
-//your own error handler if you throw any error in sync method it will be received here.
-app.use(errorHandler);
+  //your own error handler if you throw any error in sync method it will be received here.
+  app.use(errorHandler);
 
-app.listen(PORT, () => console.log("Server started"));
+  app.listen(PORT, () => console.log("Server started"));
+}
+
+startServer();
