@@ -21,7 +21,7 @@ function startServer() {
   app.use(express.static(path.join(__dirname, "public")));
 
   //form data parser
-  app.use(express.urlencoded());
+  app.use(express.urlencoded({ extended: true }));
 
   //cors enable (you can configure it)
   app.use(cors());
