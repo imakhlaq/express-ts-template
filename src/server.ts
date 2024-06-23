@@ -1,7 +1,6 @@
-import express, { type Request, type Response } from 'express';
+import express from 'express';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
-import { StatusCodes } from 'http-status-codes';
 import 'express-async-errors'; // <---------- apply async error patch
 import cors from 'cors';
 
