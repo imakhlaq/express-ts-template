@@ -8,7 +8,7 @@ function main() {
 	const server = new Server({
 		port: port
 	});
-	console.log('starting server');
+
 	server.start();
 }
 
