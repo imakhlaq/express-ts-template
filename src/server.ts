@@ -5,9 +5,9 @@ import 'express-async-errors'; // <---------- apply async error patch
 import cors from 'cors';
 
 import { ONE_HUNDRED, ONE_THOUSAND, SIXTY } from './utils/constants';
-import { errorHandler } from '@/middlewares/globalErrorHandler';
-import path from 'node:path';
-import routes from '@/routes/rotues';
+import { errorHandler } from '@/middlewares/global-error-handler';
+import path from 'path';
+import routes from '@/routes/root-routes';
 
 interface ServerOptions {
 	port: number;
@@ -28,7 +28,6 @@ export class Server {
 		this.app.use(express.json()); // parse json in request body (allow raw)
 		this.app.use(express.urlencoded({ extended: true })); // allow x-www-form-urlencoded
 		this.app.use(compression());
-		this.app.use(errorHandler); //global error handler
 		this.app.use(express.static(path.join())); //serving static files
 		this.app.use(cors()); //cors enable (you can configure it)
 
@@ -43,6 +42,8 @@ export class Server {
 
 		// all the routes
 		this.app.use(routes);
+
+		this.app.use(errorHandler); //global error handler
 
 		this.app.listen(this.port, () => {
 			console.log(`Server running on port ${this.port}...`);

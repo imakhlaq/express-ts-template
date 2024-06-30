@@ -1,3 +1,5 @@
+import { StatusCodes } from 'http-status-codes';
+
 export type CustomErrorContent = {
 	message: string;
 	context?: { [key: string]: never };
@@ -9,12 +11,18 @@ export type CustomErrorContent = {
  */
 export abstract class CustomError extends Error {
 	//abstract properties need to be implemented by custom error classes
-	abstract readonly statusCode: number;
-	abstract readonly errors: CustomErrorContent[];
-	abstract readonly logging: boolean;
+	public readonly statusCode: number;
+	public readonly message: string;
+	public readonly path: string;
 
-	constructor(message: string) {
-		super(message);
+	//abstract readonly errors: CustomErrorContent[];
+
+	protected constructor(statusCode?: number, message?: string, path?: string) {
+		super(message ?? 'Bad Request');
+
+		this.statusCode = statusCode ?? StatusCodes.BAD_REQUEST;
+		this.message = message ?? 'Bad Request';
+		this.path = `/api/v1/${path}`;
 
 		// Only because we are extending a built-in class
 		Object.setPrototypeOf(this, CustomError.prototype);

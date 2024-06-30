@@ -1,4 +1,4 @@
-import { ErrorRequestHandler, Request, Response } from 'express';
+import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 
 /**
  * Global error handler if you throw any error in sync method it will be received here
@@ -8,7 +8,8 @@ import { ErrorRequestHandler, Request, Response } from 'express';
  * @param res
  * @param next
  */
-export const errorHandler: ErrorRequestHandler = (err: Error, req: Request, res: Response) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const errorHandler: ErrorRequestHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
 	console.error(err);
 	res.status(500).send({ errors: [{ message: 'Something went wrong' }] });
 };
